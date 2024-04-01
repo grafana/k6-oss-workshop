@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  quickpizza:
+    image: ghcr.io/grafana/quickpizza-local:latest
+    ports:
+      - 3333:3333
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - 9090:9090
+    command:
+      - --web.enable-remote-write-receiver
+      - --enable-feature=native-histograms
+      - --config.file=/etc/prometheus/prometheus.yaml
+
+    volumes:
+    - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - 3000:3000
+    environment:
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_BASIC_ENABLED=false
+    volumes:
+      - ./config/grafana:/etc/grafana/provisioning/
+  
+networks:
+  default:
+    name: default_network
