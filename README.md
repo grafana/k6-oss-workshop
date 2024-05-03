@@ -445,7 +445,7 @@ There is also the option to abort the test if a threshold fails using this synta
 ```js
 thresholds: {
   "http_req_duration": [
-    { threshold: "p(95)<10", abortOnFail: false },
+    { threshold: "p(95)<10", abortOnFail: true },
   ],
 },
 ```
