@@ -288,11 +288,12 @@ This setting uses the [`constant-arrival-rate` scenario](https://grafana.com/doc
 
 Given that each iteration executes only one Pizza request, the test will run 20 requests per second. Mathematically speaking:
 - 20 iterations per second x 1 request per iteration = 20 requests per second 
+- 20 requests per second x 20 second = 200 requests
 
 Run the test. After completion, you can see the test request rate by looking at the `http_reqs` metric, which reports the number of http requests and the request rate. In our example, it is close to our goal of 20 requests per second.
 
 ```bash
-http_reqs......................: 601    19.680544/s
+http_reqs......................: 201    19.680544/s
 ```
 
 ### Think time
