@@ -15,6 +15,7 @@ export default function () {
     headers: {
       "Content-Type": "application/json",
       "X-User-ID": 23423,
+      "Authorization":  "token abcdef0123456789"
     },
   });
   console.log(`${res.json().pizza.name} (${res.json().pizza.ingredients.length} ingredients)`);
