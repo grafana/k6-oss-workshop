@@ -2,12 +2,12 @@ version: "3"
 
 services:
   quickpizza:
-    image: ghcr.io/grafana/quickpizza-local:latest
+    image: ghcr.io/grafana/quickpizza-local:latest@sha256:023e5299dece56f7d5a0bbd8fcab4dd69cb13478bb61c9c406f0cfaad1fa4f48
     ports:
       - 3333:3333
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:latest@sha256:e4254400b85610324913f0dc4acf92603d9984e7519414c5a12811aa6146acc3
     ports:
       - 9090:9090
     command:
@@ -19,7 +19,7 @@ services:
     - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:latest@sha256:2d1f9ae67c1778d33e291d4c3c759cd8b650e67491f02533499eb950e075eeb5
     restart: always
     ports:
       - 3000:3000
